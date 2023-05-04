@@ -22,14 +22,24 @@ async function register(req, res) {
 		let result = await user.save();
 		result = result.toObject();
 		if (result) {
-			delete result.password;
-			res.send(req.body);
 			console.log(result);
+			delete result.password;
+			res.status(200).send({
+            success: true,
+            message: `registered successfully`,
+            result
+         });
 		} else {
-			console.log("User already register");
+			res.status(409).send({
+         success: false,
+         message: `registration failed`
+      });
 		}
 	} catch (e) {
-		res.send("Something Went Wrong");
+		res.status(500).send({
+         success: false,
+         message: `something went terribly wrong ${e}`
+      });
 	} 
 
    // await userModel.create ({

@@ -17,6 +17,7 @@ app.use('/groups', groupsRouter);
 mongoose.connect(mongoUrl).then(() => {
    app.listen(5973, () => {
       console.log("mongodb server listening on port");
+      console.log("database connected successfully...")
    })
 }).catch((err) => {
    console.log("mongodb error", err);
