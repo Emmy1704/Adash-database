@@ -9,8 +9,8 @@ const mongoUrl = process.env.MONGODB_URL
 const app = express();
 const cors = require("cors")
 
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
 app.use('/users', usersRouter);
 app.use('/groups', groupsRouter);
 
